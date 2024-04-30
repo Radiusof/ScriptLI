@@ -1,0 +1,31 @@
+FROM node:16-alpine
+
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+ENV LD_LIBRARY_PATH=/usr/lib/instantclient_21_7
+
+RUN apt-get update && apt-get install -y wget unzip libaio1 && \
+    wget https://download.oracle.com/otn_software/linux/instantclient/217000/instantclient_basiclite-linux.x64-21.7.0.0.0dbru.zip && \    unzip instantclient_21_7/ /usr/lib && \
+    unzip instantclient_basiclite-linux.x64-21.7.0.0.0dbru.zip && \
+    mv instantclient_21_7/ /usr/lib && \
+    rm -rf instantclient_basiclite-linux.x64-21.7.0.0.0dbru.zip && \
+    ln -s /usr/lib/instantclient/libclnsh.so.21.1 /usr/lib/libclnsh.so && \
+    ln -s /usr/lib/instantclient/libocci.so.21.1 /usr/lib/libocci.so && \
+    ln -s /usr/lib/instantclient/libocciicus.so /usr/lib/libocciicus.so && \
+    ln -s /usr/lib/instantclient/libnnz21.so /usr/lib/libnnz21.so && \
+    ln -s /lib/libc.so.6 /usr/lib/libc.so.2 && \
+    ln -s /lib64/ld-linux-x86-64.so.2 /usr/lib/ld-linux-x86-64.so.2 && \
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm pkg delete scripts.prepare
+RUN npm ci --only=production && npm cache clean --force
+
+COPY dist .
+
+EXPOSE 3000
+
+CMD ["node","main"]

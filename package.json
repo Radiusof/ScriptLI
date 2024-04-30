@@ -1,0 +1,32 @@
+{
+    "name" : "projectgen",
+    "version" : "1.0.0",
+    "description" : "Générateur de projet",
+    "main" :"index.js",
+    "scripts": {
+        "build": "npx tsc",
+        "start": "node dist/index.js",
+        "test": "echo \"Error: No test specified\" && exit 1",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "install-project": "npm i && npm run build && npm i -g"
+    },
+    "author": "RadiusOf",
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "figlet": "^1.5.2",
+        "fs-extra": "^10.1.0",
+        "inquirer": "^8.2.5"
+    },
+    "devDependencies": {
+        "@types/figlet":"^1.5.2",
+        "@types/fs-extra": "^9.0.13",
+        "@types/inquirer":"^8.2.5",
+        "@types/node":"^18.11.9",
+        "prettier": "^2.7.1",
+        "typescript": "^5.0.0"
+    },
+    "bin": {
+        "projectgen": "./dist/index.js"
+    }
+}
