@@ -1,8 +1,52 @@
+# Node modules
 node_modules/
-./dist
+
+# Build output
 dist/
+build/
+out/
 
-
-# ignore all logs
+# Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Coverage directory
+coverage/
+
+# Misc
+*.tgz
+*.gz
+
+# Optional npm cache directory
+.npm/
+
+# Local env files
+.local/
+
+# Mac system files
+.AppleDouble
+.LSOverride
+
+# Windows system files
+ehthumbs.db
+Desktop.ini
+
+# Test output
+test-output/
