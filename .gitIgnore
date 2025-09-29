@@ -37,6 +37,12 @@ coverage/
 # Optional npm cache directory
 .npm/
 
+# Yarn cache
+.yarn/cache/
+.yarn/install-state.gz
+.pnp.*
+.pnp.loader.*
+
 # Local env files
 .local/
 
