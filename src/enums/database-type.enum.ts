@@ -1,5 +1,5 @@
 export enum DatabaseType {
-    Postgresql = 'postgresql',
-    Oracle = 'oracle',
-    None = 'none',
+    Postgresql = 'Postgresql',
+    Oracle = 'Oracle',
+    None = 'None',
 }

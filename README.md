@@ -14,6 +14,7 @@ Currently supported project types:
 Supported databases:
 - PostgreSQL
 - Oracle
+- MongoDB
 - None (no database)
 
 ## Features
@@ -30,16 +31,16 @@ Supported databases:
   - NestJS: Includes dependencies like @nestjs/config, @nestjs/terminus, nestjs-pino, class-transformer, class-validator, Helmet, and Compodoc for documentation.
   - Jest for unit testing with coverage and JUnit reporting.
   - Docker pipelines for containerization (with database-specific Dockerfiles).
-- **Database Integration**: Automatic installation of TypeORM and database drivers based on selection.
+- **Database Integration**: Automatic installation of TypeORM or Prisma and database drivers based on selection.
 - **Testing Framework**: Jest configured with TypeScript support, including mocks for file system and process operations.
-- **CI/CD**: GitHub Actions workflow for automated testing on multiple Node.js versions.
+- **CI/CD**: GitHub Actions workflows for automated testing and weekly audits on Node.js 22.x using Yarn.
 
 ## Installation
 
 To install the tool globally on your system:
 
 ```shell
-npm run install-project
+yarn run install-project
 ```
 
 This command installs dependencies, builds the project, and installs it globally as projectgen.
@@ -71,17 +72,17 @@ Example output:
     3. Sets up Git hooks and scripts.
 
 ## Commands
-The generated projects include the following npm scripts (defined in package.json):
+The generated projects include the following yarn scripts (defined in package.json):
 
 ```shell
-    npm run build //Compiles TypeScript to JavaScript using tsc.
-    npm run start //Runs the built application from dist/index.js.
-    npm run test  //Runs Jest tests.
-    npm run test:watch  //Runs Jest in watch mode.
-    npm run test:cov //Runs Jest with coverage reporting.
-    npm run format //Formats code using Prettier.
-    npm run lint //Lints code using ESLint and fixes issues.
-    npm run compodoc //Generates documentation using Compodoc (NestJS only).
+    yarn build //Compiles TypeScript to JavaScript using tsc.
+    yarn start //Runs the built application from dist/index.js.
+    yarn test  //Runs Jest tests.
+    yarn test:watch  //Runs Jest in watch mode.
+    yarn test:cov //Runs Jest with coverage reporting.
+    yarn format //Formats code using Prettier.
+    yarn lint //Lints code using ESLint and fixes issues.
+    yarn compodoc //Generates documentation using Compodoc (NestJS only).
 ```
 
 ## Testing system

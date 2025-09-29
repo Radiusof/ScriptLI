@@ -1,5 +1,5 @@
 export enum ProjectType {
-    Nest = 'nestJs',
-    Node = 'nodeJs',
-    TypeScript = 'typescript',
+    Nest = 'NestJs',
+    Node = 'NodeJs',
+    TypeScript = 'TypeScript',
 }
