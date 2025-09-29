@@ -93,6 +93,7 @@ The project uses Jest as the testing framework, configured in jest.config.js wit
     - NestGenerator: Tests NestJS-specific generation, including Docker pipeline setup.
 
 Key testing features:
+
     - Mocks for fs and child_process.execSync to avoid real file system or process interactions.
     - Coverage thresholds set to 80% for branches, functions, lines, and statements.
     - JUnit reporting for CI integration.
