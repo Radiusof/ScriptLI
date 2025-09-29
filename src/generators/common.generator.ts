@@ -32,9 +32,9 @@ export class CommonGenerator {
     private async installHusky(){
         console.log(chalk.bgGreenBright('Install Husky'));
 
-        execSync('npm install husky --save-dev');
+        execSync('yarn add --dev husky');
         execSync('npm pkg set scripts.prepare="husky install"');
-        execSync('npm install');
+        execSync('yarn install');
     }
 
     private async configureHusky(){
@@ -50,7 +50,7 @@ export class CommonGenerator {
     // #region CommitLint
     private async installCommitLint(){
         console.log(chalk.bgGreenBright('Install CommitLint'));
-        execSync('npm install --save-dev @commitlint/config-conventional @commitlint/cli');
+        execSync('yarn add --dev @commitlint/config-conventional @commitlint/cli');
     }
 
     private async configureCommitLint(){
@@ -62,7 +62,7 @@ export class CommonGenerator {
     // #region Prettier
     private async installPrettier(){
         console.log(chalk.bgGreenBright('Install Prettier'));
-        execSync('npm install --save-dev prettier');
+        execSync('yarn add --dev prettier');
     }
 
     private async configurePrettier(){
@@ -78,7 +78,7 @@ export class CommonGenerator {
     // #region EsLint
     private async installEsLint(){
         console.log(chalk.bgGreenBright('Install EsLint'));
-        execSync('npm install --save-dev eslint-config-prettier eslint-plugin-prettier eslint-plugin-security @typescript-eslint/eslint-plugin @typescript-eslint/parser');
+        execSync('yarn add --dev eslint-config-prettier eslint-plugin-prettier eslint-plugin-security @typescript-eslint/eslint-plugin @typescript-eslint/parser');
     }
 
     private async configureEsLint(){
@@ -121,17 +121,17 @@ export class CommonGenerator {
     private async installDatabase(configDatabase : DatabaseType){
 
         if(configDatabase && configDatabase !== DatabaseType.None){
-            execSync('npm install typeorm --save')
+            execSync('yarn add typeorm')
         }
 
         switch(configDatabase){
             case DatabaseType.Postgresql:
                 console.log(chalk.bgGreenBright('Install PostGreSQL'));
-                execSync('npm install pg --save');
+                execSync('yarn add pg');
                 break;
             case DatabaseType.Oracle:
                 console.log(chalk.bgGreenBright('Install Oracle'));
-                execSync('npm install oracledb --save');
+                execSync('yarn add oracledb');
                 break;
             default:
                 console.log(chalk.bgGreenBright(`${configDatabase} cannot be installed yet with this script, try another one!`));   

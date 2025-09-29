@@ -56,12 +56,12 @@ export class NestGenerator implements GeneratorInterface {
     private async installNestJsDependencies(){
         console.log(chalk.bgGreenBright('Installing NestJs Dependencies ...'));
 
-        execSync('npm install @nestjs/config @nestjs/terminus nestjs-pino class-transformer class-validator');
+        execSync('yarn add @nestjs/config @nestjs/terminus nestjs-pino class-transformer class-validator');
     }
 
     private async installCompoDoc(){
         console.log(chalk.bgGreenBright('Installing CompoDoc ...'));
-        execSync('npm install --save-dev @compodoc/compodoc');
+        execSync('yarn add --dev @compodoc/compodoc');
     }
 
     private async configureCompoDoc(){
@@ -72,12 +72,12 @@ export class NestGenerator implements GeneratorInterface {
     private async installHelmet(){
         console.log(chalk.bgGreenBright('Installing Helmet ...'));
 
-        execSync('npm install helmet');
+        execSync('yarn add helmet');
     }
 
     private async installJest(){
         console.log(chalk.bgGreenBright('Installing Jest ...'));
-        execSync('npm install --save-dev jest-junit');
+        execSync('yarn add --dev jest-junit');
     }
 
     private async configureJest(){

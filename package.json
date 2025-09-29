@@ -1,28 +1,35 @@
 {
-    "name" : "projectgen",
-    "version" : "1.0.0",
-    "description" : "Générateur de projet",
-    "main" :"index.js",
+    "name": "projectgen",
+    "version": "1.0.0",
+    "description": "Générateur de projet",
+    "main": "index.js",
     "scripts": {
         "build": "npx tsc",
         "start": "node dist/index.js",
-        "test": "echo \"Error: No test specified\" && exit 1",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:cov": "jest --coverage",
         "format": "prettier --write \"src/**/*.ts\"",
-        "install-project": "npm i && npm run build && npm i -g"
+        "install-project": "yarn install && yarn build && yarn global add ."
     },
     "author": "RadiusOf",
     "license": "ISC",
     "dependencies": {
+        "@types/jest": "^30.0.0",
         "chalk": "^4.1.2",
         "figlet": "^1.5.2",
+        "fs": "^0.0.1-security",
         "fs-extra": "^10.1.0",
-        "inquirer": "^8.2.5"
+        "inquirer": "^8.2.5",
+        "jest": "^30.2.0",
+        "ts-jest": "^29.4.4"
     },
     "devDependencies": {
-        "@types/figlet":"^1.5.2",
+        "@babel/preset-typescript": "^7.27.1",
+        "@types/figlet": "^1.5.2",
         "@types/fs-extra": "^9.0.13",
-        "@types/inquirer":"^8.2.5",
-        "@types/node":"^18.11.9",
+        "@types/inquirer": "^8.2.5",
+        "@types/node": "^18.11.9",
         "prettier": "^2.7.1",
         "typescript": "^5.0.0"
     },
