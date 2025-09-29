@@ -33,16 +33,16 @@ export class CommonGenerator {
         console.log(chalk.bgGreenBright('Install Husky'));
 
         execSync('yarn add --dev husky');
-        execSync('npm pkg set scripts.prepare="husky install"');
+        execSync('yarn pkg set scripts.prepare="husky"');
         execSync('yarn install');
     }
 
     private async configureHusky(){
         console.log(chalk.bgGreenBright('Configure Husky'));
 
-        execSync('npx husky hook .husky/commit-msg \'npx --no -- commitlint --edt $1\'');
-        execSync('npx husky hook .husky/pre-commit \'npm run format && git add -A && npm run lint\'');
-        execSync('npx husky hook .husky/pre-push \'npm test\'');        
+        execSync('npx husky hook .husky/commit-msg "npx --no -- commitlint --edt $1"');
+        execSync('npx husky hook .husky/pre-commit "yarn format && git add -A && yarn lint"');
+        execSync('npx husky hook .husky/pre-push "yarn test"');        
         
     }
     //#endregion
@@ -68,7 +68,7 @@ export class CommonGenerator {
     private async configurePrettier(){
         console.log(chalk.bgGreenBright('Configure Prettier'));
 
-        execSync('npm pkg set "scripts.format=prettier --write \"**/*.ts\""');
+        execSync('yarn pkg set "scripts.format=prettier --write \"**/*.ts\""');
 
 
         fs.copyFileSync (`${this.TEMPLATE_DIR}/.prettierrc`, './prettierrc');
@@ -86,7 +86,7 @@ export class CommonGenerator {
 
         fs.copyFileSync (`${this.TEMPLATE_DIR}/.eslintrc.js`, './.eslintrc.js');
 
-        execSync('npm pkg set scripts.lint="eslint \"{src,apps,libs,test}/**/*.ts\" --fix"');
+        execSync('yarn pkg set scripts.lint="eslint \"{src,apps,libs,test}/**/*.ts\" --fix"');
     }
     //#endregion
 

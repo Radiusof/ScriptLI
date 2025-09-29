@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import fs from 'fs';
+import path from 'path';
 
 import { Configuration } from '../models/configuration.model';
 import {GeneratorInterface} from '../generators/interfaces/generator.interface';
@@ -26,7 +27,12 @@ export class NestGenerator implements GeneratorInterface {
     private async createNestProject(configuration:Configuration){
         console.log(chalk.bold.white('Generating NestJs Project'));
 
-        execSync(`nest new ${configuration.name} --package-manager npm --skip-install`, {stdio: 'inherit'});
+        const projectPath = path.join(process.cwd(), configuration.name);
+        if (fs.existsSync(projectPath)) {
+            fs.rmSync(projectPath, { recursive: true, force: true });
+        }
+
+        execSync(`npx @nestjs/cli new ${configuration.name} --package-manager yarn --skip-install`, {stdio: 'inherit'});
         process.chdir(configuration.name);
     }
 
@@ -66,7 +72,7 @@ export class NestGenerator implements GeneratorInterface {
 
     private async configureCompoDoc(){
         console.log(chalk.bgGreenBright('Configuring CompoDoc ...'));
-        execSync('npm pkg  set scripts.compodoc="npx @compodoc/compodoc -p tsconfig.json"');
+        execSync('yarn pkg  set scripts.compodoc="npx @compodoc/compodoc -p tsconfig.json"');
     }
 
     private async installHelmet(){
@@ -83,10 +89,10 @@ export class NestGenerator implements GeneratorInterface {
     private async configureJest(){
         console.log(chalk.bgGreenBright('Configuring Jest ...'));
         fs.copyFileSync(`${this.TEMPLATE_DIR}/jest.config.js`, './jest.config.js');
-        execSync('npm pkg  set scripts.test="jest --config jest.config.js"');
-        execSync('npm pkg  set scripts.test:watch="jest --watch --config jest.config.js"');
-        execSync('npm pkg  set scripts.test:cov="jest --coverage --config jest.config.js"');
-        execSync('npm pkg  set scripts.test:debug="node --inspect-brk -r tsconfig-path/register -t ts-node/register node_modules/.bin/jest --runInBand --config jest.config.js"');
+        execSync('yarn pkg  set scripts.test="jest --config jest.config.js"');
+        execSync('yarn pkg  set scripts.test:watch="jest --watch --config jest.config.js"');
+        execSync('yarn pkg  set scripts.test:cov="jest --coverage --config jest.config.js"');
+        execSync('yarn pkg  set scripts.test:debug="node --inspect-brk -r tsconfig-path/register -t ts-node/register node_modules/.bin/jest --runInBand --config jest.config.js"');
     }
 
     private async configurePipeline(configuration : Configuration) {
