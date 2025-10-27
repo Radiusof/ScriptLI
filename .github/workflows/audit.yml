@@ -22,5 +22,7 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: Add npm-cli plugin
+        run: yarn plugin import @yarnpkg/plugin-npm-cli
       - name: Run yarn audit
         run: yarn audit
